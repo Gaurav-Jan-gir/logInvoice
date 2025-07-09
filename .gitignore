@@ -1,0 +1,11 @@
+.vscode/*
+stored_emails/*
+email_connector.py
+
+attachment_manager.py
+email_display.py
+email_fetcher.py
+email_filter.py
+email_storage.py
+read_email.py
+credentials.txt
