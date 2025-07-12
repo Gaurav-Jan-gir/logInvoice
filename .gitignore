@@ -9,3 +9,4 @@ email_filter.py
 email_storage.py
 read_email.py
 credentials.txt
+attachments/*
