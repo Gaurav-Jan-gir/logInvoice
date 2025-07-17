@@ -6,11 +6,11 @@ def invoice_download(em : imaplib.IMAP4_SSL):
     em.select("INBOX")
     status, email_ids = em.search(None, "SUBJECT Invoice")
     email_ids = email_ids[0].split()
+    pdf_paths = []
     for email_id in email_ids:
         status, msg_data = em.fetch(email_id, "(RFC822)")
         email_body = msg_data[0][1]
         email_message = email.message_from_bytes(email_body)
-        pdf_paths = []
         if email_message.is_multipart():
             for part in email_message.walk():
                 if part.get_content_maintype() == 'multipart':
