@@ -1,0 +1,11 @@
+Dummy Invoice
+Invoice Number: INV-001
+Date: 2025-05-31
+Billed To: John Doe
+Address: 123 Main Street, City, Country
+Item Quantity Unit Price Total
+Widget A 2 $50.00 $100.00
+Widget B 1 $100.00 $100.00
+Service Fee 1 $150.00 $150.00
+Total $350.00
+Page 1
