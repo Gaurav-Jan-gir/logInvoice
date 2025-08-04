@@ -1,12 +1,115 @@
-.vscode/*
-stored_emails/*
-email_connector.py
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
 
+# Virtual environment
+.venv/
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Project specific
+attachments/
+extracted_text/
+parsed_data/
+*.db
+*.sqlite
+*.sqlite3
+
+# Credentials and configuration
+credentials.txt
+email_config.json
+mysql_config.json
+email_tracking.json
+
+# LaTeX auxiliary files
+*.aux
+*.log
+*.toc
+*.out
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+texput.log
+
+# Temporary files
+tempCodeRunnerFile.py
+*.tmp
+*.temp
+
+# Documentation build artifacts
+docs/build/
+
+# Email storage
+stored_emails/
+
+# Deprecated files
+email_connector.py
 attachment_manager.py
 email_display.py
 email_fetcher.py
 email_filter.py
 email_storage.py
 read_email.py
-credentials.txt
-attachments/*
+
+# Exclude alternative implementation
+src (2)/
+test**
+settings**
+.invoice_logger_key
+.invoice_logger_settings.json.enc
+cleanup_database.py
+debug_parsing.py
+hello.xlsx
+july1025.py
+
+july2125.py
+parsed_invoices.json
+process_all_invoices.py
+docs/** */
+**.tex
+**.pdf
+tex/Makefile
+tex/Makefile_regex
+**.png
+**.db
+**.csv
+**.xlsx
+july1025.py

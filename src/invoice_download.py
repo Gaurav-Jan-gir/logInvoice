@@ -1,6 +1,23 @@
 import imaplib
 import email
-from PyPDF2 import PdfReader
+import os
+
+def login(email_address, password):
+    imap_server = "imap.gmail.com"
+    em = imaplib.IMAP4_SSL(imap_server)
+    em.login(email_address, password)
+    return em
+
+def get_credentials():
+    if os.path.exists("credentials.txt"):
+        with open("credentials.txt", "r") as f:
+            lines = f.readlines()
+            email_address = lines[0].split('=')[1].strip()
+            password = lines[1].split('=')[1].strip().strip('\"')
+            return email_address, password
+    else:
+        email_address = input("Enter your email address: ")
+        password = input("Enter your password: ")
 
 def invoice_download(em : imaplib.IMAP4_SSL):
     em.select("INBOX")
@@ -18,23 +35,19 @@ def invoice_download(em : imaplib.IMAP4_SSL):
                 if part.get('Content-Disposition') is None:
                     continue
                 filename = part.get_filename()
+                os.makedirs('attachments', exist_ok=True)
                 pdf_paths.append(f'attachments/{filename}')
                 with open(f'attachments/{filename}', 'wb') as f:
                     f.write(part.get_payload(decode=True))
                     f.close()
     return pdf_paths
 
-if __name__ == "__main__":
-    email_address = "gaurav.jngira@gmail.com"
-    password = "nxjl blfw ofkb gzqm"
-    imap_server = "imap.gmail.com"
-    em = imaplib.IMAP4_SSL(imap_server)
-    em.login(email_address, password)
-    pdf_paths = invoice_download(em)
-    for pdf_path in pdf_paths:
-        with open(pdf_path, 'rb') as f:
-            pdf_reader = PdfReader(f)
-            for page in pdf_reader.pages:
-                print(page.extract_text())
-    em.close()
-    em.logout() 
+if __name__ == '__main__':
+    email_address, password = get_credentials()
+    em = login(email_address, password)
+    pdf_files = invoice_download(em)
+    print("Downloaded PDF files:")
+    for pdf in pdf_files:
+        print(pdf)
+
+    
